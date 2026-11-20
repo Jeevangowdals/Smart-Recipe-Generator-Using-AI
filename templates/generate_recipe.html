@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Generate Recipe</h1>
+        </div>
+    </div>
+    <center>
+        {% if recipe %}
+            <h2>Generated Recipe</h2>
+            <div style="white-space: pre-wrap;">{{ recipe }}</div>
+        {% endif %}
+        {% if message %}
+            <h2>{{ message }}</h2>
+        {% endif %}
+
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-12">
+                        <div class="wow fadeInUp" data-wow-delay="0.2s">
+                            <form action="{{url_for('generate_recipe')}}" method="post">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <select class="form-control" id="session" name="session" required>
+                                                <option value="" disabled selected>Select Session</option>
+                                                <option value="Breakfast">Breakfast</option>
+                                                <option value="Lunch">Lunch</option>
+                                                <option value="Dinner">Dinner</option>
+                                                <option value="Snack">Snack</option>
+                                            </select>
+                                            <label for="session">Session</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" id="calories" name="calories" placeholder="Calories" required>
+                                            <label for="calories">Calories</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <select class="form-control" id="type" name="type" required>
+                                                <option value="" disabled selected>Select Type</option>
+                                                <option value="Indian">Indian</option>
+                                                <option value="French">French</option>
+                                                <option value="Italian">Italian</option>
+                                                <option value="Mexican">Mexican</option>
+                                                <option value="Chinese">Chinese</option>
+                                                <option value="Japanese">Japanese</option>
+                                                <option value="Thai">Thai</option>
+                                                <option value="Mediterranean">Mediterranean</option>
+                                                <option value="American">American</option>
+                                                <option value="Korean">Korean</option>
+                                                <option value="Brazilian">Brazilian</option>
+                                                <option value="Ethiopian">Ethiopian</option>
+                                                <option value="Vietnamese">Vietnamese</option>
+                                                <option value="Moroccan">Moroccan</option>
+                                            </select>
+                                            <label for="type">Type</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="ingredients_to_use" name="ingredients_to_use" placeholder="Ingredients to Use" required style="height: 100px;"></textarea>
+                                            <label for="ingredients_to_use">Ingredients to Use</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="preferred" name="preferred" placeholder="Preferred" style="height: 100px;"></textarea>
+                                            <label for="preferred">Preferred (Optional)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="ingredients_not_to_use" name="ingredients_not_to_use" placeholder="Ingredients Not to Use" style="height: 100px;"></textarea>
+                                            <label for="ingredients_not_to_use">Ingredients Not to Use (Optional)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Generate Recipe</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+{% endblock %}
