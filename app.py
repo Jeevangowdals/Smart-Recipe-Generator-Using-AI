@@ -322,10 +322,10 @@ def generate_recipe():
             # --- MODIFICATION END ---
 
         except Exception as e:
-            # Use 'flash' or a specific message to inform the user about the error
+            # Use 'flash' or a specific message to inform the user about the error.
             return render_template('generate_recipe.html', is_logged_in=True, message=f"Error generating recipe: {str(e)}")
         
-        # Pass the cleaned recipe to the template
+        # Pass the cleaned recipe to the template.
         return render_template('generate_recipe.html', is_logged_in=True, recipe=cleaned_recipe)
     return render_template('generate_recipe.html', is_logged_in=True)
 
